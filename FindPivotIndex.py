@@ -10,6 +10,19 @@ Return the leftmost pivot index. If no such index exists, return -1.
 742 / 745 testcases passed
 
 """
+#solution four: 745 /745 testcases passed. runtime 167ms. memory 15.3 MB
+
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        total = sum(nums)
+        left_sum = 0
+        for i in range(len(nums)):
+            if left_sum == (total - nums[i] - left_sum):
+                return i
+            left_sum += nums[i]
+        return -1
+
+#below are previous attempts
 
 #solution one: 742 / 745 testcases passed
 class Solution:
@@ -68,3 +81,4 @@ class Solution:
                 return num
             elif num == (len(nums)-1):
                 return -1
+                
